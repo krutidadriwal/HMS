@@ -1,0 +1,189 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Geo&family=Iceland&display=swap');
+
+
+body {
+    background-color: rgb(255, 255, 255);
+    font-family: Iceland, OCR A Std, monospace;
+    font-size: 50px;
+    color: #000000;
+}
+
+.screen {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.hidden {
+    display: none;
+}
+
+button {
+    background-color: #FFCE52;
+    font-family: Iceland, OCR A Std, monospace;
+    padding: 10px 20px;
+    font-size: 25px;
+    cursor: pointer;
+    color: #000000;
+    border: 3px solid #000000;
+    text-align: center;
+}
+
+button:hover {
+    background-color: #c4c4c4;
+    color: #5c1e1c;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(10, 50px);    /* 10 columns of auto-fitted size */
+    grid-template-rows: repeat(10, 50px);
+    gap: 0px;
+}
+
+.grid-item {
+    width: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;    /* aligns the whole grid within its container */
+    align-items: center;        /* VERTICALLY aligns the whole grid within its container */
+    cursor: pointer;
+    font-family: Iceland, OCR A Std, monospace;
+    font-size: 25;
+}
+
+.grid-item-light {
+    background-color: #FFCE52;
+}
+
+.grid-item-dark {
+    background-color:#db9d00;
+}
+
+.revealed {
+    cursor: default;
+}
+
+@keyframes grow-and-shrink {
+    0% {
+      transform: scale(0.5);
+    }
+    100% {
+      transform: scale(1.0);
+    }
+  }
+
+  .animated-image {
+    animation: grow-and-shrink 2000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+  }
+
+  @keyframes slap-shrink {
+    
+    10%, 90% {
+        transform: translate3d(-1px, 0, 0);
+      }
+      
+      20%, 80% {
+        transform: translate3d(2px, 0, 0);
+      }
+    
+      30%, 50%, 70% {
+        transform: translate3d(-4px, 0, 0);
+      }
+    
+      40%, 60% {
+        transform: translate3d(4px, 0, 0);
+      }
+    
+  }
+
+#title-barney-cry{
+    animation: slap-shrink 1000ms;
+}
+
+#start-screen-buttons {
+    margin-top: 5px;
+}
+
+
+
+#timer {
+    margin-top: 10px;
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: #000000;
+    transform: translateY(10px);
+    font-family: Iceland, OCR A Std, monospace;
+}
+
+#game-to-home-btn {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+}
+
+#win-lose-section {
+    position: absolute;
+    top: 50%;
+    left: 60px;
+    transform: translateY(-25%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 50px;
+    font-family: Iceland, OCR A Std, monospace;
+    color: #5c1e1c;
+    text-align: left;
+}
+
+#win-lose-image {
+    margin-top: 20px;
+    width: 250px;
+}
+
+#play-again-btn {
+    position: absolute;
+    top: 50%;
+    right: 75px;
+    transform: translateY(-50%);
+    padding: 10px 20px;
+    font-size: 30px;
+    cursor: pointer;
+}
+
+#game-screen img {
+    margin-top: -20px;
+    width: 75%;
+    height: auto;
+}
+
+#rules-screen {
+    
+    top: 50%;
+    left: 50%;
+    padding: 0 20%;
+    align-items: center;
+    font-size: 30px;
+    font-family: Iceland, OCR A Std, monospace;
+    color: #5c1e1c;
+}
+
+#board {
+    display: grid;
+    grid-template-columns: repeat(10, 1fr);
+    grid-template-rows: repeat(10, 1fr);
+    gap: 2px;
+    width: 500px;
+    height: 500px;
+    background-color: #ccc;
+}
+
+#rules-to-home-btn {
+    margin-top: 15px;
+}

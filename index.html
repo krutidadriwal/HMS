@@ -1,0 +1,111 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HIMYM Minesweeper</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+
+<body>
+    <audio id="intro-bgm" loop>
+        <source src="audio/hms_intro.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="game-bgm" loop>
+        <source src="audio/hms_game_bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+
+    <!-- check if it is neede to convert to .wav -->
+    <audio id="slap-sound">
+        <source src="audio/slap_sound.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <audio id="lost-bgm">
+        <source src="audio/hms_lost_bgm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+
+
+
+    <div id="start-screen" class="screen">
+        <img src="art/title.png" width=75%>
+        <img src="art/you_lose.png" width="200px" class="hidden" id="title-barney-cry">
+
+        <img src="art/barney.png" width="200px" class="animated-image" id="title-barney">
+        <div id="start-screen-buttons">
+            <button id="start-game-btn">PLAY</button>
+            <button id="home-to-rules-btn">RULES</button>
+            <button id="home-to-credits-btn">CREDITS</button>
+        </div>
+    </div>
+
+    <div id="rules-screen" class="screen hidden">
+        <u>The rules of minesweeper are simple: <b>avoid the slaps from Marshall Eriksen! ✋🏻✋🏻✋🏻</b></u>
+        <br><br>
+        <ul>
+            <li>Select a tile to reveal what's hidden underneath.</li>
+            <li>A numbered tile indicates the number of slaps in the tile's proximity.(slaps are approved by Lily,the
+                slapBet commisioner)</li>
+            <li>If you know a tile has a slap, you can mark it with a flag 🚩 by <u>right clicking</u> on it.</li>
+            <li>Avoid the slaps and reveal all the safe tiles to win!</li>
+        </ul>
+        <br><br>
+        <u>Suit up!</u>
+        <br><br>
+        <button id="rules-to-home-btn">BACK</button>
+    </div>
+
+
+    <div id="credits-screen" class="screen hidden">
+        <button id="credits-to-home-btn">BACK</button>
+
+        <p>This minesweeper dupe was made by Kruti dadriwal<br>
+            Thanks for checking it out! Hope you have fun.</p>
+        <p>Click <a href src="">here</a> for the source code.</p>
+
+        <u>Music and Sounds</u>
+        <ul>
+            <li>"You Just got Slapped"Jason Segel</li>
+
+            <li>Slap sound by floraphonic<br>
+                https://pixabay.com/users/floraphonic-38928062/</li>
+        </ul>
+    </div>
+
+    <div id="game-screen" class="screen hidden">
+        <button id="game-to-home-btn">BACK</button>
+        <img src="art/title.png">
+        <div id="board" class="grid-container"></div>
+        <div id="timer">Time: 0</div>
+        <div id="win-lose-section">
+            <div id="win-lose-text" class="hidden"></div>
+            <img src="art/you_lose.png" width="50%" id="win-lose-image" class="hidden">
+        </div>
+        <button id="play-again-btn" class="animated-image hidden">PLAY AGAIN?</button>
+    </div>
+
+    <script src="script.js"></script>
+
+
+
+</body>
+
+</html>
+
+
+
+<!-- css related to script -->
+
+<!-- grid 
+ grid-continer
+ grid-item
+ .grid-item-light
+ .grid-item-dark
+ .revealed 
+ -->
