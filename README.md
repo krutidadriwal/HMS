@@ -35,6 +35,8 @@ Edit
 
 Just open `index.html` in your browser. No additional setup required.
 
+here is the deployed page for directly accessing the game: [HIMYM Minesweeper](https://krutidadriwal.github.io/HMS/)
+
 > Tip: For full experience, allow your browser to autoplay audio.
 
 ## 🙌 Credits
