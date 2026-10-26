@@ -19,15 +19,12 @@ A fun, How I Met Your Mother-themed twist on the classic Minesweeper game — fe
 ├── /audio/ # Background music and sound effects
 └── /art/ # Game images and animations
 
-markdown
-Copy
-Edit
-
 ## 🕹️ How to Play
 
-- Click tiles to reveal them.
+- Click tiles to reveal them. Your first click is always safe.
 - Numbered tiles show how many slaps are nearby.
-- Right-click to mark suspected slap tiles with 🚩.
+- Double-click or right-click (or long-press on mobile) to mark suspected slap tiles with 🚩. The counter shows how many slaps are left to flag.
+- Use the 🔊 button in the top-right corner to mute or unmute the music.
 - Reveal all non-slap tiles to win.
 - Hit a slap? Marshall wins 😢
 

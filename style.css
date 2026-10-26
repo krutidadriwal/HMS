@@ -1,11 +1,19 @@
-
 @import url('https://fonts.googleapis.com/css2?family=Geo&family=Iceland&display=swap');
 
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+:root {
+    /* board is as large as possible while still fitting title, status bar and board on screen */
+    --board-size: max(260px, min(500px, calc(100vw - 32px), calc(100vh - 12vh - 170px)));
+}
 
 body {
+    margin: 0;
     background-color: rgb(255, 255, 255);
-    font-family: Iceland, OCR A Std, monospace;
-    font-size: 50px;
+    font-family: Iceland, "OCR A Std", monospace;
+    font-size: clamp(18px, 3vw, 30px);
     color: #000000;
 }
 
@@ -14,16 +22,17 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    min-height: 100vh;
+    padding: 64px 16px 16px;
 }
 
 .hidden {
-    display: none;
+    display: none !important;
 }
 
 button {
     background-color: #FFCE52;
-    font-family: Iceland, OCR A Std, monospace;
+    font-family: Iceland, "OCR A Std", monospace;
     padding: 10px 20px;
     font-size: 25px;
     cursor: pointer;
@@ -37,89 +46,59 @@ button:hover {
     color: #5c1e1c;
 }
 
-.grid-container {
-    display: grid;
-    grid-template-columns: repeat(10, 50px);    /* 10 columns of auto-fitted size */
-    grid-template-rows: repeat(10, 50px);
-    gap: 0px;
-}
-
-.grid-item {
-    width: 50px;
-    height: 50px;
-    display: flex;
-    justify-content: center;    /* aligns the whole grid within its container */
-    align-items: center;        /* VERTICALLY aligns the whole grid within its container */
-    cursor: pointer;
-    font-family: Iceland, OCR A Std, monospace;
-    font-size: 25;
-}
-
-.grid-item-light {
-    background-color: #FFCE52;
-}
-
-.grid-item-dark {
-    background-color:#db9d00;
-}
-
-.revealed {
+button:disabled {
     cursor: default;
+    opacity: 0.6;
 }
 
-@keyframes grow-and-shrink {
-    0% {
-      transform: scale(0.5);
-    }
-    100% {
-      transform: scale(1.0);
-    }
-  }
+#mute-btn {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 10;
+    padding: 6px 12px;
+}
 
-  .animated-image {
-    animation: grow-and-shrink 2000ms;
-    animation-timing-function: ease-in-out;
-    animation-iteration-count: 1;
-    animation-direction: alternate;
-  }
+/* START SCREEN */
 
-  @keyframes slap-shrink {
-    
-    10%, 90% {
-        transform: translate3d(-1px, 0, 0);
-      }
-      
-      20%, 80% {
-        transform: translate3d(2px, 0, 0);
-      }
-    
-      30%, 50%, 70% {
-        transform: translate3d(-4px, 0, 0);
-      }
-    
-      40%, 60% {
-        transform: translate3d(4px, 0, 0);
-      }
-    
-  }
+#start-title {
+    width: min(75%, 900px);
+}
 
-#title-barney-cry{
-    animation: slap-shrink 1000ms;
+.barney {
+    width: min(200px, 40vw);
+    margin: 10px 0;
 }
 
 #start-screen-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
     margin-top: 5px;
 }
 
+/* RULES + CREDITS SCREENS */
 
+.text-screen {
+    max-width: 900px;
+    margin: 0 auto;
+    color: #5c1e1c;
+}
 
-#timer {
-    margin-top: 10px;
-    font-size: 24px;
-    margin-bottom: 10px;
-    color: #000000;
-    transform: translateY(10px);
-    font-family: Iceland, OCR A Std, monospace;
+.text-screen a {
+    color: #db9d00;
+}
+
+#rules-to-home-btn,
+#credits-to-home-btn {
+    margin-top: 15px;
+}
+
+/* GAME SCREEN */
+
+#game-screen {
+    justify-content: flex-start;
 }
 
 #game-to-home-btn {
@@ -128,50 +107,24 @@ button:hover {
     left: 10px;
 }
 
-#win-lose-section {
-    position: absolute;
-    top: 50%;
-    left: 60px;
-    transform: translateY(-25%);
+#game-title {
+    width: var(--board-size);
+    max-height: 12vh;
+    object-fit: contain;
+}
+
+#status-bar {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 50px;
-    font-family: Iceland, OCR A Std, monospace;
-    color: #5c1e1c;
-    text-align: left;
+    justify-content: space-between;
+    width: var(--board-size);
+    margin: 10px 0;
+    font-size: 24px;
 }
 
-#win-lose-image {
-    margin-top: 20px;
-    width: 250px;
-}
-
-#play-again-btn {
-    position: absolute;
-    top: 50%;
-    right: 75px;
-    transform: translateY(-50%);
-    padding: 10px 20px;
-    font-size: 30px;
-    cursor: pointer;
-}
-
-#game-screen img {
-    margin-top: -20px;
-    width: 75%;
-    height: auto;
-}
-
-#rules-screen {
-    
-    top: 50%;
-    left: 50%;
-    padding: 0 20%;
-    align-items: center;
-    font-size: 30px;
-    font-family: Iceland, OCR A Std, monospace;
-    color: #5c1e1c;
+#board-wrapper {
+    position: relative;
+    width: var(--board-size);
+    height: var(--board-size);
 }
 
 #board {
@@ -179,11 +132,116 @@ button:hover {
     grid-template-columns: repeat(10, 1fr);
     grid-template-rows: repeat(10, 1fr);
     gap: 2px;
-    width: 500px;
-    height: 500px;
+    width: 100%;
+    height: 100%;
     background-color: #ccc;
+    border: 2px solid #ccc;
 }
 
-#rules-to-home-btn {
-    margin-top: 15px;
+.grid-item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    font-family: Iceland, "OCR A Std", monospace;
+    font-size: calc(var(--board-size) / 18);
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+    touch-action: manipulation;
+}
+
+.grid-item-light {
+    background-color: #FFCE52;
+}
+
+.grid-item-dark {
+    background-color: #db9d00;
+}
+
+.grid-item:not(.revealed):hover {
+    filter: brightness(1.1);
+}
+
+.grid-item-light.revealed {
+    background-color: rgb(255, 255, 255);
+}
+
+.grid-item-dark.revealed {
+    background-color: #c4c4c4;
+}
+
+.grid-item.slap {
+    background-color: red;
+}
+
+/* once the game is over, no tile is clickable */
+#board.locked .grid-item {
+    cursor: default;
+    filter: none;
+}
+
+.explosion {
+    position: absolute;
+    width: calc(var(--board-size) * 0.35);
+    transform: translate(-50%, -50%);
+    mix-blend-mode: multiply;  /* hides the white background of slap.png */
+    pointer-events: none;
+    animation: slap-shrink 500ms;
+}
+
+#win-lose-section {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    padding: 16px;
+    background-color: rgba(255, 255, 255, 0.9);
+    font-size: calc(var(--board-size) / 12);
+    color: #5c1e1c;
+    text-align: center;
+}
+
+#win-lose-image {
+    width: 45%;
+}
+
+/* ANIMATIONS */
+
+@keyframes grow-and-shrink {
+    0% {
+        transform: scale(0.5);
+    }
+    100% {
+        transform: scale(1.0);
+    }
+}
+
+.animated-image {
+    animation: grow-and-shrink 2000ms;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: 1;
+    animation-direction: alternate;
+}
+
+@keyframes slap-shrink {
+    10%, 90% {
+        translate: -1px 0;
+    }
+    20%, 80% {
+        translate: 2px 0;
+    }
+    30%, 50%, 70% {
+        translate: -4px 0;
+    }
+    40%, 60% {
+        translate: 4px 0;
+    }
+}
+
+#title-barney-cry {
+    animation: slap-shrink 1000ms;
 }

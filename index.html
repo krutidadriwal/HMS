@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -18,8 +19,6 @@
         Your browser does not support the audio element.
     </audio>
 
-
-    <!-- check if it is neede to convert to .wav -->
     <audio id="slap-sound">
         <source src="audio/slap_sound.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -30,14 +29,12 @@
         Your browser does not support the audio element.
     </audio>
 
-
-
+    <button id="mute-btn" aria-label="Mute sound">🔊</button>
 
     <div id="start-screen" class="screen">
-        <img src="art/title.png" width=75%>
-        <img src="art/you_lose.png" width="200px" class="hidden" id="title-barney-cry">
-
-        <img src="art/barney.png" width="200px" class="animated-image" id="title-barney">
+        <img src="art/title.png" id="start-title" alt="HIMYM Minesweeper">
+        <img src="art/you_lose.png" class="barney hidden" id="title-barney-cry" alt="">
+        <img src="art/barney.png" class="barney animated-image" id="title-barney" alt="Barney">
         <div id="start-screen-buttons">
             <button id="start-game-btn">PLAY</button>
             <button id="home-to-rules-btn">RULES</button>
@@ -45,67 +42,53 @@
         </div>
     </div>
 
-    <div id="rules-screen" class="screen hidden">
-        <u>The rules of minesweeper are simple: <b>avoid the slaps from Marshall Eriksen! ✋🏻✋🏻✋🏻</b></u>
-        <br><br>
+    <div id="rules-screen" class="screen text-screen hidden">
+        <p><u>The rules of minesweeper are simple: <b>avoid the slaps from Marshall Eriksen! ✋🏻✋🏻✋🏻</b></u></p>
         <ul>
-            <li>Select a tile to reveal what's hidden underneath.</li>
-            <li>A numbered tile indicates the number of slaps in the tile's proximity.(slaps are approved by Lily,the
-                slapBet commisioner)</li>
-            <li>If you know a tile has a slap, you can mark it with a flag 🚩 by <u>right clicking</u> on it.</li>
+            <li>Select a tile to reveal what's hidden underneath. Your first pick is always safe.</li>
+            <li>A numbered tile indicates the number of slaps in the tile's proximity. (Slaps are approved by Lily,
+                the Slap Bet commissioner.)</li>
+            <li>If you know a tile has a slap, you can mark it with a flag 🚩 by <u>double clicking</u> or
+                <u>right clicking</u> on it (or <u>long pressing</u> on a touch screen).</li>
             <li>Avoid the slaps and reveal all the safe tiles to win!</li>
         </ul>
-        <br><br>
-        <u>Suit up!</u>
-        <br><br>
+        <p><u>Suit up!</u></p>
         <button id="rules-to-home-btn">BACK</button>
     </div>
 
-
-    <div id="credits-screen" class="screen hidden">
-        <button id="credits-to-home-btn">BACK</button>
-
-        <p>This minesweeper dupe was made by Kruti dadriwal<br>
+    <div id="credits-screen" class="screen text-screen hidden">
+        <p>This minesweeper dupe was made by Kruti Dadriwal.<br>
             Thanks for checking it out! Hope you have fun.</p>
-        <p>Click <a href src="">here</a> for the source code.</p>
+        <p>Click <a href="https://github.com/krutidadriwal/HMS" target="_blank" rel="noopener">here</a> for the
+            source code.</p>
 
-        <u>Music and Sounds</u>
+        <p><u>Music and Sounds</u></p>
         <ul>
-            <li>"You Just got Slapped"Jason Segel</li>
-
-            <li>Slap sound by floraphonic<br>
-                https://pixabay.com/users/floraphonic-38928062/</li>
+            <li>"You Just Got Slapped" by Jason Segel</li>
+            <li>Slap sound by <a href="https://pixabay.com/users/floraphonic-38928062/" target="_blank"
+                    rel="noopener">floraphonic</a> on Pixabay</li>
         </ul>
+        <button id="credits-to-home-btn">BACK</button>
     </div>
 
     <div id="game-screen" class="screen hidden">
         <button id="game-to-home-btn">BACK</button>
-        <img src="art/title.png">
-        <div id="board" class="grid-container"></div>
-        <div id="timer">Time: 0</div>
-        <div id="win-lose-section">
-            <div id="win-lose-text" class="hidden"></div>
-            <img src="art/you_lose.png" width="50%" id="win-lose-image" class="hidden">
+        <img src="art/title.png" id="game-title" alt="HIMYM Minesweeper">
+        <div id="status-bar">
+            <div id="timer">Time: 0</div>
+            <div id="slaps-left">Slaps: 12</div>
         </div>
-        <button id="play-again-btn" class="animated-image hidden">PLAY AGAIN?</button>
+        <div id="board-wrapper">
+            <div id="board" class="grid-container"></div>
+            <div id="win-lose-section" class="hidden">
+                <div id="win-lose-text"></div>
+                <img src="art/you_lose.png" id="win-lose-image" alt="">
+                <button id="play-again-btn" class="animated-image">PLAY AGAIN?</button>
+            </div>
+        </div>
     </div>
 
     <script src="script.js"></script>
-
-
-
 </body>
 
 </html>
-
-
-
-<!-- css related to script -->
-
-<!-- grid 
- grid-continer
- grid-item
- .grid-item-light
- .grid-item-dark
- .revealed 
- -->
